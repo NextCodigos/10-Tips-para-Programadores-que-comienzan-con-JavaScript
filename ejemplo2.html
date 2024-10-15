@@ -23,6 +23,8 @@
 
         // Accedemos al nombre de la cerveza y lo mostramos en la consola
         console.log(beer.name);
+            // Seleccionamos div clase caja
+        document.querySelector(".caja").innerHTML=(beer2.show())
     </script>
 </body>
 </html>
@@ -38,6 +40,7 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="caja"></div>
     <script>
         // Creamos clase y constructor
         class Beer2{
@@ -54,6 +57,9 @@
         let beer2 = new Beer2("Tremens","Delirium");
         // Vemos el metodo de funcion
         console.log(beer2.show());
+
+        // Seleccionamos div clase caja
+        document.querySelector(".caja").innerHTML=(beer2.show())
     </script>
 </body>
 </html>

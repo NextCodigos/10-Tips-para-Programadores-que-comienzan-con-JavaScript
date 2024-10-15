@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="caja"></div>
     <script>
         // Definimos una clase para representar una cerveza
         class Beer2 {
@@ -26,6 +27,8 @@
 
         // Mostramos la información de la cerveza usando el método show()
         console.log(beer2.show());
+        // Seleccionamos div clase caja y mostramos el resultado del método show()
+        document.querySelector(".caja").innerHTML = beer2.show();
     </script>
 </body>
 </html>

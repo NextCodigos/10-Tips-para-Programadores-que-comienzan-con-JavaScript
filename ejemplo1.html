@@ -7,29 +7,28 @@
 </head>
 <body>
     <div class="caja"></div>
-    <!-- Min:1:58 -->
     <script>
         // Definimos una clase para representar una cerveza
-        class Beer2 {
+        class Beer {
             // Constructor que inicializa el nombre y la marca de la cerveza
             constructor(name, brand) {
                 this.name = name;
                 this.brand = brand;
             }
-            
-            // Función para mostrar información de la cerveza
+            // Método que devuelve el nombre y la marca de la cerveza
             show() {
-                return this.name + " by " + this.brand;
+                return this.name + " " + this.brand;
             }
         }
 
-        // Creamos una instancia de la clase Beer2 con nombre "Tremens" y marca "Delirium"
-        let beer2 = new Beer2("Tremens", "Delirium");
+        // Creamos una instancia de la clase Beer con nombre "Tremens" y marca "Delirium"
+        let beer = new Beer("Tremens", "Delirium");
 
-        // Mostramos la información de la cerveza usando el método show()
-        console.log(beer2.show());
+        // Accedemos al nombre de la cerveza y lo mostramos en la consola
+        console.log(beer.name);
+
         // Seleccionamos div clase caja y mostramos el resultado del método show()
-        document.querySelector(".caja").innerHTML = beer2.show();
+        document.querySelector(".caja").innerHTML = beer.show();
     </script>
 </body>
 </html>

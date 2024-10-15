@@ -8,11 +8,7 @@
   <body>
     <div class="caja">
       <h2>Información de la cerveza</h2>
-      <p>Nombre: <span id="name"></span></p>
-      <p>Marca: <span id="brand"></span></p>
-      <p>Graduación: <span id="graduation"></span></p>
-      <p>Origen: <span id="origin"></span></p>
-      <p>Descripción: <span id="description"></span></p>
+      <div class="beer-info"></div>
     </div>
     <script>
       // Definimos una clase para representar una cerveza
@@ -34,19 +30,20 @@
       // Creamos una instancia de la clase Beer con nombre "Tremens", marca "Delirium", graduación "9%", origen "Bélgica" y descripción "Cerveza trapense de alta graduación"
       let beer = new Beer("Tremens", "Delirium", "9%", "Bélgica", "Cerveza trapense de alta graduación");
 
-      // Seleccionamos los elementos del DOM para mostrar la información
-      let nameElement = document.getElementById("name");
-      let brandElement = document.getElementById("brand");
-      let graduationElement = document.getElementById("graduation");
-      let originElement = document.getElementById("origin");
-      let descriptionElement = document.getElementById("description");
+      // Función para escribir la información de la cerveza en la web
+      function escribir(beer) {
+        let beerInfo = document.querySelector(".beer-info");
+        beerInfo.innerHTML = `
+          <p><strong>Nombre:</strong> ${beer.name}</p>
+          <p><strong>Marca:</strong> ${beer.brand}</p>
+          <p><strong>Graduación:</strong> ${beer.graduation}</p>
+          <p><strong>Origen:</strong> ${beer.origin}</p>
+          <p><strong>Descripción:</strong> ${beer.description}</p>
+        `;
+      }
 
-      // Mostramos la información de la cerveza en los elementos del DOM
-      nameElement.textContent = beer.name;
-      brandElement.textContent = beer.brand;
-      graduationElement.textContent = beer.graduation;
-      originElement.textContent = beer.origin;
-      descriptionElement.textContent = beer.description;
+      // Llamamos a la función para escribir la información de la cerveza
+      escribir(beer);
     </script>
   </body>
 </html>

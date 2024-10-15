@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Camisetas Personalizadas</title>
+  </head>
+  <body>
+    <div class="caja">
+      <h2>Información de las camisetas</h2>
+      <div class="shirt-info"></div>
+    </div>
+    <script>
+      // Definimos una clase para representar una camiseta
+      class Shirt {
+        // Constructor que inicializa el nombre, talla, color, material, descripción, precio y descuento de la camiseta
+        constructor(name, size, color, material, description, price, discount) {
+          this.name = name;
+          this.size = size;
+          this.color = color;
+          this.material = material;
+          this.description = description;
+          this.price = price;
+          this.discount = discount;
+        }
+
+        // Método para calcular el precio con descuento
+        priceWithDiscount() {
+          return this.price - (this.price * this.discount / 100);
+        }
+
+        // Método para calcular el precio con IVA (21%)
+        priceWithIVA() {
+          let priceDiscounted = this.priceWithDiscount();
+          return priceDiscounted * 1.21; // IVA 21%
+        }
+      }
+
+      // Creamos instancias de la clase Shirt
+      let shirt1 = new Shirt("Camiseta Vintage", "M", "Rojo", "Algodón", "Camiseta de estilo vintage y ajuste regular", 25, 10); // Precio: 25€, Descuento: 10%
+      let shirt2 = new Shirt("Camiseta Deportiva", "L", "Azul", "Poliéster", "Camiseta ideal para hacer deporte con tecnología de secado rápido", 30, 15); // Precio: 30€, Descuento: 15%
+
+      // Función para escribir la información de la camiseta en la web
+      function escribir(shirt) {
+        let shirtInfo = document.querySelector(".shirt-info");
+        shirtInfo.innerHTML += `
+          <p><strong>Nombre:</strong> ${shirt.name}</p>
+          <p><strong>Talla:</strong> ${shirt.size}</p>
+          <p><strong>Color:</strong> ${shirt.color}</p>
+          <p><strong>Material:</strong> ${shirt.material}</p>
+          <p><strong>Descripción:</strong> ${shirt.description}</p>
+          <p><strong>Precio:</strong> ${shirt.price}€</p>
+          <p><strong>Descuento:</strong> ${shirt.discount}%</p>
+          <p><strong>Precio con descuento:</strong> ${shirt.priceWithDiscount().toFixed(2)}€</p>
+          <p><strong>Precio con IVA:</strong> ${shirt.priceWithIVA().toFixed(2)}€</p>
+          <hr />
+        `;
+      }
+
+      // Llamamos a la función para escribir la información de ambas camisetas
+      escribir(shirt1);
+      escribir(shirt2);
+    </script>
+  </body>
+</html>

@@ -8,11 +8,11 @@
   <body>
     <div class="caja">
       <h2>Información de la cerveza</h2>
-      <p>Nombre: <span id="name"></span></p>
-      <p>Marca: <span id="brand"></span></p>
-      <p>Graduación: <span id="graduation"></span></p>
-      <p>Origen: <span id="origin"></span></p>
-      <p>Descripción: <span id="description"></span></p>
+      <p>Nombre: <span class="beer-name"></span></p>
+      <p>Marca: <span class="beer-brand"></span></p>
+      <p>Graduación: <span class="beer-graduation"></span></p>
+      <p>Origen: <span class="beer-origin"></span></p>
+      <p>Descripción: <span class="beer-description"></span></p>
     </div>
     <script>
       // Definimos una clase para representar una cerveza
@@ -35,11 +35,11 @@
       let beer = new Beer("Tremens", "Delirium", "9%", "Bélgica", "Cerveza trapense de alta graduación");
 
       // Seleccionamos los elementos del DOM para mostrar la información
-      let nameElement = document.getElementById("name");
-      let brandElement = document.getElementById("brand");
-      let graduationElement = document.getElementById("graduation");
-      let originElement = document.getElementById("origin");
-      let descriptionElement = document.getElementById("description");
+      let nameElement = document.querySelector(".beer-name");
+      let brandElement = document.querySelector(".beer-brand");
+      let graduationElement = document.querySelector(".beer-graduation");
+      let originElement = document.querySelector(".beer-origin");
+      let descriptionElement = document.querySelector(".beer-description");
 
       // Mostramos la información de la cerveza en los elementos del DOM
       nameElement.textContent = beer.name;

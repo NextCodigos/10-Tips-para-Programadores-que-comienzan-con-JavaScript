@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="caja">
+      <h2>Información de las cervezas</h2>
+      <div class="beer-info"></div>
+    </div>
+    <script>
+      // Definimos una clase para representar una cerveza
+      class Beer {
+        // Constructor que inicializa el nombre, marca, graduación, origen y descripción de la cerveza
+        constructor(name, brand, graduation, origin, description) {
+          this.name = name;
+          this.brand = brand;
+          this.graduation = graduation;
+          this.origin = origin;
+          this.description = description;
+        }
+        // Método que devuelve el nombre y la marca de la cerveza
+        show() {
+          return this.name + " " + this.brand;
+        }
+      }
+
+      // Creamos instancias de la clase Beer
+      let beer1 = new Beer("Tremens", "Delirium", "9%", "Bélgica", "Cerveza trapense de alta graduación");
+      let beer2 = new Beer("Corona", "Corona", "4.6%", "México", "Cerveza mexicana de baja graduación");
+
+      // Función para escribir la información de la cerveza en la web
+      function escribir(beer) {
+        let beerInfo = document.querySelector(".beer-info");
+        beerInfo.innerHTML += `
+          <p><strong>Nombre:</strong> ${beer.name}</p>
+          <p><strong>Marca:</strong> ${beer.brand}</p>
+          <p><strong>Graduación:</strong> ${beer.graduation}</p>
+          <p><strong>Origen:</strong> ${beer.origin}</p>
+          <p><strong>Descripción:</strong> ${beer.description}</p>
+          <hr />
+        `;
+      }
+
+      // Llamamos a la función para escribir la información de ambas cervezas
+      escribir(beer1);
+      escribir(beer2);
+    </script>
+  </body>
+</html>
