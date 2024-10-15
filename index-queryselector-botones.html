@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Camisetas Personalizadas</title>
+    <style>
+      img {
+        max-width: 150px;
+        height: auto;
+        margin-bottom: 10px;
+      }
+      .carrito {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="caja">
+      <h2>Información de las camisetas</h2>
+      <div class="shirt-info"></div>
+    </div>
+
+    <div class="carrito">
+      <h3>Carrito de compras</h3>
+      <div class="cart-items"></div>
+      <p><strong>Total:</strong> <span class="cart-total">0.00€</span></p>
+      <button onclick="verCarrito()">Ver carrito</button>
+    </div>
+
+    <script>
+      // Definimos una clase para representar una camiseta
+      class Shirt {
+        constructor(name, size, color, material, description, price, discount, image) {
+          this.name = name;
+          this.size = size;
+          this.color = color;
+          this.material = material;
+          this.description = description;
+          this.price = price;
+          this.discount = discount;
+          this.image = image;
+        }
+
+        // Método para calcular el precio con descuento
+        priceWithDiscount() {
+          return this.price - (this.price * this.discount / 100);
+        }
+
+        // Método para calcular el precio con IVA (21%)
+        priceWithIVA() {
+          let priceDiscounted = this.priceWithDiscount();
+          return priceDiscounted * 1.21; // IVA 21%
+        }
+      }
+
+      // Creamos instancias de la clase Shirt con imágenes locales
+      let shirt1 = new Shirt(
+        "Camiseta Vintage",
+        "M",
+        "Rojo",
+        "Algodón",
+        "Camiseta de estilo vintage y ajuste regular",
+        25,
+        10,
+        "./images/vintage-shirt.jpg"
+      );
+
+      let shirt2 = new Shirt(
+        "Camiseta Deportiva",
+        "L",
+        "Azul",
+        "Poliéster",
+        "Camiseta ideal para hacer deporte con tecnología de secado rápido",
+        30,
+        15,
+        "./images/sport-shirt.jpg"
+      );
+
+      // Variable para almacenar los productos en el carrito
+      let carrito = [];
+
+      // Función para añadir productos al carrito
+      function añadirAlCarrito(shirt) {
+        carrito.push(shirt);
+        actualizarCarrito();
+      }
+
+      // Función para actualizar el contenido del carrito
+      function actualizarCarrito() {
+        let cartItems = document.querySelector(".cart-items");
+        let cartTotal = document.querySelector(".cart-total");
+        cartItems.innerHTML = "";
+        let total = 0;
+
+        carrito.forEach((shirt) => {
+          cartItems.innerHTML += `<p>${shirt.name} - ${shirt.priceWithIVA().toFixed(2)}€</p>`;
+          total += shirt.priceWithIVA();
+        });
+
+        cartTotal.textContent = total.toFixed(2) + "€";
+      }
+
+      // Función para mostrar un mensaje con los productos del carrito
+      function verCarrito() {
+        if (carrito.length > 0) {
+          alert("Productos en el carrito:\n" + carrito.map(shirt => `${shirt.name} - ${shirt.priceWithIVA().toFixed(2)}€`).join("\n"));
+        } else {
+          alert("El carrito está vacío.");
+        }
+      }
+
+      // Función para escribir la información de la camiseta en la web y añadir botones
+      function escribir(shirt) {
+        let shirtInfo = document.querySelector(".shirt-info");
+        shirtInfo.innerHTML += `
+          <img src="${shirt.image}" alt="${shirt.name}">
+          <p><strong>Nombre:</strong> ${shirt.name}</p>
+          <p><strong>Talla:</strong> ${shirt.size}</p>
+          <p><strong>Color:</strong> ${shirt.color}</p>
+          <p><strong>Material:</strong> ${shirt.material}</p>
+          <p><strong>Descripción:</strong> ${shirt.description}</p>
+          <p><strong>Precio con IVA:</strong> ${shirt.priceWithIVA().toFixed(2)}€</p>
+          <button onclick="añadirAlCarrito(shirt1)">Comprar</button>
+          <button onclick="verCarrito()">Ver carrito</button>
+          <hr />
+        `;
+      }
+
+      // Llamamos a la función para escribir la información de ambas camisetas
+      escribir(shirt1);
+      escribir(shirt2);
+    </script>
+  </body>
+</html>
